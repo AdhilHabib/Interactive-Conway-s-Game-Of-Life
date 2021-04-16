@@ -50,6 +50,20 @@ document.addEventListener('DOMContentLoaded', function() {
         // CLEARPopulationLayout();
         makeStillLifeBox();
     };
+    PATTERN2.onclick = function() {
+        // population.generation = 0;
+        // population.neighbourhood= []; // living neighbours layout
+        // population.layout= [];
+        // CLEARPopulationLayout();
+        makeBeacon();
+    };
+    PATTERN3.onclick = function() {
+        // population.generation = 0;
+        // population.neighbourhood= []; // living neighbours layout
+        // population.layout= [];
+        // CLEARPopulationLayout();
+        makeBlinker();
+    };
 
 
     autoplayButton.onclick = function() {
@@ -133,6 +147,43 @@ function makeStillLifeBox() {
 
 }
 
+function makeBeacon() {
+
+    if(universe.width>=10){
+        population.layout[1][1] = 1;
+        population.layout[1][2] = 1;
+        population.layout[2][1] = 1;
+        population.layout[4][3] = 1;
+        population.layout[4][4] = 1;
+        population.layout[3][4] = 1;
+        document.getElementsByTagName("tr")[1].getElementsByTagName("td")[1].classList.add('alive');
+        document.getElementsByTagName("tr")[1].getElementsByTagName("td")[2].classList.add('alive');
+        document.getElementsByTagName("tr")[2].getElementsByTagName("td")[1].classList.add('alive');
+        document.getElementsByTagName("tr")[4].getElementsByTagName("td")[3].classList.add('alive');
+        document.getElementsByTagName("tr")[4].getElementsByTagName("td")[4].classList.add('alive');
+        document.getElementsByTagName("tr")[3].getElementsByTagName("td")[4].classList.add('alive');
+        populateUniverse();
+    }
+
+
+}
+
+function makeBlinker() {
+
+    if(universe.width>=10){
+        population.layout[2][1] = 1;
+        population.layout[2][2] = 1;
+        population.layout[2][3] = 1;
+       
+        document.getElementsByTagName("tr")[2].getElementsByTagName("td")[1].classList.add('alive');
+        document.getElementsByTagName("tr")[2].getElementsByTagName("td")[2].classList.add('alive');
+        document.getElementsByTagName("tr")[2].getElementsByTagName("td")[3].classList.add('alive');
+        populateUniverse();
+    }
+
+
+}
+
 /**
  * Adding population to the grid according to its layout.
  */
@@ -193,7 +244,17 @@ function addControls() {
      let Pattern1 = document.createElement('input');
     Pattern1.type = 'button';
     Pattern1.id = 'PATTERN1';
-    Pattern1.value = 'Pattern1';
+    Pattern1.value = 'Block';
+
+    let Pattern2 = document.createElement('input');
+    Pattern2.type = 'button';
+    Pattern2.id = 'PATTERN2';
+    Pattern2.value = 'Beacon';
+
+    let Pattern3 = document.createElement('input');
+    Pattern3.type = 'button';
+    Pattern3.id = 'PATTERN3';
+    Pattern3.value = 'Blinker';
 
 
     let GenButton = document.createElement('input');
@@ -209,6 +270,8 @@ function addControls() {
     timeControlDiv.appendChild(GenButton);
     timeControlDiv.appendChild(Clear);
     timeControlDiv.appendChild(Pattern1);
+    timeControlDiv.appendChild(Pattern2);
+    timeControlDiv.appendChild(Pattern3);
 
     let resizer = document.createElement('div');
     controlsDiv.appendChild(genDiv);
