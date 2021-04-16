@@ -29,9 +29,44 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     };
 
-    Clear.onclick = function(){
-    layout.clear();
-    population.generation = 0;
+   Clear.onclick = function(){
+
+        // population.generation: 0;
+          // neighbourhood: [], // living neighbours layout
+          // layout: [],
+
+      console.log("Here");
+      // console.log(population.layout);
+
+      for (let i = 0; i < universe.height; i++) {
+          population.neighbourhood.push([]);
+          population.layout.push([]);
+          for (let j = 0; j < universe.width; j++) {
+            population.layout[i].push(0); // 0 or 1 == dead or alive
+            population.neighbourhood[i].push(0); // 0 or 1 == dead or alive
+              console.log(population.layout[i]);
+              // populateUniverse();
+
+          }
+      }
+      for (let i = 0; i < universe.height; i++) {
+          for (let j = 0; j < universe.width; j++) {
+              if (population.layout[i][j] == 0) {
+
+                  document.getElementsByTagName("tr")[i].getElementsByTagName("td")[j].classList.remove('alive');
+              }
+          }
+      }
+      // getLivingCellsCount() = 0;
+      // clearInterval(autoplayIntervalObj);
+      // autoplayIntervalObj = null;
+      autoplayIntervalObj = setInterval(function() {
+      }, AUTOPLAY_INTERVAL);
+      // createRandomPopulationLayout();
+      console.log("Here2");
+
+    // layout.clear();
+    // population.generation = 0;
     };
 
     nextGenButton.onclick = function() {
