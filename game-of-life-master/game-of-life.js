@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
     layout.clear();
     population.generation = 0;
     };
-    
+
     nextGenButton.onclick = function() {
         createNextGeneration();
     };
@@ -77,7 +77,7 @@ function createUniverse(universeWidth = UNIVERSE_WIDTH, universeHeight = UNIVERS
 }
 
 /**
- * Generating random population layout. 
+ * Generating random population layout.
  */
 function createRandomPopulationLayout() {
     for (let i = 0; i < universe.height; i++) {
@@ -90,8 +90,8 @@ function createRandomPopulationLayout() {
     population.generation++;
 }
 
-/** 
- * Adding population to the grid according to its layout. 
+/**
+ * Adding population to the grid according to its layout.
  */
 function populateUniverse() {
     for (let i = 0; i < universe.height; i++) {
@@ -132,7 +132,7 @@ function addControls() {
     statsLabel.innerHTML = 'Living cells: ';
     let livingCellsCounterSpan = document.createElement('span');
     livingCellsCounterSpan.id = 'livingCellsCounterSpan';
-    livingCellsCounterSpan.innerHTML = getLivingCellsCount() + ' (' + (getLivingCellsCount() * 100 / (universe.width * universe.height)) + ' %)';
+    livingCellsCounterSpan.innerHTML = getLivingCellsCount();
     statsDiv.appendChild(statsLabel);
     statsDiv.appendChild(livingCellsCounterSpan);
 
@@ -160,16 +160,6 @@ function addControls() {
     timeControlDiv.appendChild(Clear);
 
     let resizer = document.createElement('div');
-    let size = document.createElement('input');
-    size.type = 'num';
-    size.id = 'SIZE';
-    let builder = document.createElement('input');
-    builder.type = 'button';
-    builder.id = 'BUILD';
-    builder.value = 'Build';
-    resizer.appendChild(size);
-    resizer.appendChild(builder);
-
     controlsDiv.appendChild(genDiv);
     controlsDiv.appendChild(statsDiv);
     controlsDiv.appendChild(timeControlDiv);
@@ -186,7 +176,7 @@ function addControls() {
  */
  function createNextGeneration() {
     checkLivingConditions();
-    
+
     for (let i = 0; i < universe.height; i++) {
         for (let j = 0; j < universe.width; j++) {
             if (population.neighbourhood[i][j] < 2 || population.neighbourhood[i][j] > 3) { // lonely or too crowded
@@ -201,10 +191,10 @@ function addControls() {
     populateUniverse();
     population.generation++;
     document.getElementById('genCounterSpan').innerHTML = population.generation;
-    document.getElementById('livingCellsCounterSpan').innerHTML = getLivingCellsCount() + ' (' + (getLivingCellsCount() * 100 / (universe.width * universe.height)) + ' %)';
+    document.getElementById('livingCellsCounterSpan').innerHTML = getLivingCellsCount();
 }
 
-/** 
+/**
  * Checking cell surroundings by counting its living neighbours.
  */
 function checkLivingConditions() {
@@ -213,8 +203,8 @@ function checkLivingConditions() {
         for (let j = 0; j < universe.width; j++) {
             neighbourCount = 0;
 
-            // check for neighbours in the prev row 
-            if (typeof population.layout[i-1] !== 'undefined') { 
+            // check for neighbours in the prev row
+            if (typeof population.layout[i-1] !== 'undefined') {
                 if (typeof population.layout[i-1][j-1] !== 'undefined' && population.layout[i-1][j-1] == 1) {
                     neighbourCount++;
                 }
@@ -226,7 +216,7 @@ function checkLivingConditions() {
                 }
             }
 
-            // check for neighbours in current row 
+            // check for neighbours in current row
             if (typeof population.layout[i][j-1] !== 'undefined' && population.layout[i][j-1] == 1) {
                 neighbourCount++;
             }
@@ -234,8 +224,8 @@ function checkLivingConditions() {
                 neighbourCount++;
             }
 
-            // check for neighbours in the next row 
-            if (typeof population.layout[i+1] !== 'undefined') { 
+            // check for neighbours in the next row
+            if (typeof population.layout[i+1] !== 'undefined') {
                 if (typeof population.layout[i+1][j-1] !== 'undefined' && population.layout[i+1][j-1] == 1) {
                     neighbourCount++;
                 }
