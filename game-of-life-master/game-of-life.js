@@ -43,6 +43,15 @@ document.addEventListener('DOMContentLoaded', function() {
         createNextGeneration();
     };
 
+    PATTERN1.onclick = function() {
+        // population.generation = 0;
+        // population.neighbourhood= []; // living neighbours layout
+        // population.layout= [];
+        // CLEARPopulationLayout();
+        makeStillLifeBox();
+    };
+
+
     autoplayButton.onclick = function() {
         if (!autoplayIntervalObj) { // autoplay is not running
             document.getElementById('autoplayButton').value = 'Stop';
@@ -107,6 +116,23 @@ function CLEARPopulationLayout() {
 
 }
 
+function makeStillLifeBox() {
+
+    if(universe.width>=10){
+        population.layout[1][1] = 1;
+        population.layout[1][2] = 1;
+        population.layout[2][1] = 1;
+        population.layout[2][2] = 1;
+        document.getElementsByTagName("tr")[1].getElementsByTagName("td")[1].classList.add('alive');
+        document.getElementsByTagName("tr")[1].getElementsByTagName("td")[2].classList.add('alive');
+        document.getElementsByTagName("tr")[2].getElementsByTagName("td")[1].classList.add('alive');
+        document.getElementsByTagName("tr")[2].getElementsByTagName("td")[2].classList.add('alive');
+        populateUniverse();
+    }
+
+
+}
+
 /**
  * Adding population to the grid according to its layout.
  */
@@ -163,6 +189,13 @@ function addControls() {
     Clear.id = 'Clear';
     Clear.value = 'Reset';
 
+
+     let Pattern1 = document.createElement('input');
+    Pattern1.type = 'button';
+    Pattern1.id = 'PATTERN1';
+    Pattern1.value = 'Pattern1';
+
+
     let GenButton = document.createElement('input');
     GenButton.type = 'button';
     GenButton.id = 'GenButton';
@@ -173,8 +206,9 @@ function addControls() {
     autoplayButton.value = 'Start';
     timeControlDiv.appendChild(nextGenButton);
     timeControlDiv.appendChild(autoplayButton);
-      timeControlDiv.appendChild(GenButton);
+    timeControlDiv.appendChild(GenButton);
     timeControlDiv.appendChild(Clear);
+    timeControlDiv.appendChild(Pattern1);
 
     let resizer = document.createElement('div');
     controlsDiv.appendChild(genDiv);
