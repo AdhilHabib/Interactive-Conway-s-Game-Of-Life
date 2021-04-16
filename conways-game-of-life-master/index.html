@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/conway.css" rel="stylesheet" media="screen">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  </head>
+
+  <body>
+    <div class="row">
+      <div class="col-sm-7 col-lg-9 col-sm-push-5 col-lg-push-3">
+        <!-- define the HTML canvas element that will hold the graphical output -->
+        <div id="game-container">
+          <div id="canvas"></div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+      
+      <div id="sidebar" class="col-sm-5 col-lg-3 col-sm-pull-7 col-lg-pull-9">
+        <h2><small>Conway's Game of Life</small></h2>
+        <p>
+          Click and drag inside the game board to toggle cell state.  Use the buttons under the board to control the game playback.
+        </p>
+        <hr />
+        <div id="game-tools" class="tools">
+          <div>
+            <button class="btn btn-primary play"><span class="glyphicon glyphicon-play"></span> Play</button>
+            <button class="btn btn-primary pause"><span class="glyphicon glyphicon-pause"></span> Pause</button>
+
+            <span class="turn-counter">
+              turn <span class="counter">0</span>
+            </span>
+            <button class="btn btn-default clear pull-right">Reset Board</button>
+          </div>
+        </div>
+        <hr />
+        <div id="options-panel">
+          <h3 class="title">
+            <small>
+              Options
+            </small>
+          </h3>
+          <form>
+            <div class="form-group">
+              <label for="update-interval" class="form-label">Update interval</label>
+              <input type="number" class="form-control" id="update-interval" name="update-interval">
+            </div>
+            <div class="form-group">
+              <label for="grid-size" class="form-label">Grid size</label>
+              <input type="number" class="form-control" id="grid-size" name="grid-size">
+            </div>
+            <input type="submit" value="Apply" class="btn btn-default" />
+          </form>
+        </div>
+        <hr />
+        <p>
+          Made by Sashko Stubailo
+        </p>
+      </div>
+    </div>
+
+    
+    <!-- include libraries -->
+    <script src="js/include/jquery-2.0.3.min.js"></script>
+    <script src="js/include/underscore-min.js"></script>
+    <script src="js/include/backbone-min.js"></script>
+
+    <!-- game code -->
+    <script src="js/conway_utils.js"></script>
+    <script src="js/conway.js"></script>
+    <script src="js/options.js"></script>
+    <script>
+      // code to run the game
+      var options_model = new Conway.OptionsModel();
+      new Conway.OptionsView({model: options_model, el: "#options-panel"});
+      var conway_model = new Conway.ConwayModel({options: options_model});
+      new Conway.ConwayToolsView({model: conway_model, el: document.getElementById("game-tools")});
+      new Conway.ConwayGridView({model: conway_model, el: document.getElementById("game-container")});
+    </script>
+  </body>
+</html>
