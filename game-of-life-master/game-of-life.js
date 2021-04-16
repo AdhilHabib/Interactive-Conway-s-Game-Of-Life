@@ -1,5 +1,5 @@
-const UNIVERSE_WIDTH = 20;
-const UNIVERSE_HEIGHT = 20;
+var UNIVERSE_WIDTH = 20;
+var UNIVERSE_HEIGHT = 20;
 const AUTOPLAY_INTERVAL = 100; // ms
 
 let population = {
@@ -11,10 +11,18 @@ let universe;
 let autoplayIntervalObj;
 
 document.addEventListener('DOMContentLoaded', function() {
-    createUniverse(UNIVERSE_WIDTH, UNIVERSE_HEIGHT);
+    var size = parseInt(prompt("Enter a Value"));
+    createUniverse(size, size);
     createRandomPopulationLayout();
     populateUniverse();
     addControls();
+
+     /*builder.onclick = function() {
+        var size = parseInt(document.getElementById("SIZE").value);
+        createUniverse(size, size);
+        createRandomPopulationLayout();
+        populateUniverse();
+    };*/
 
     nextGenButton.onclick = function() {
         createNextGeneration();
@@ -130,22 +138,21 @@ function addControls() {
     timeControlDiv.appendChild(nextGenButton);
     timeControlDiv.appendChild(autoplayButton);
 
-    let timeControlDiv1 = document.createElement('div');
-    let nextGenButton1 = document.createElement('input');
-    nextGenButton1.type = 'num';
-    nextGenButton1.id = 'nextGenButton1';
-    nextGenButton1.value = 'Next Generation1';
-    let autoplayButton1 = document.createElement('input');
-    autoplayButton1.type = 'button';
-    autoplayButton1.id = 'autoplayButton1';
-    autoplayButton1.value = 'Start1';
-    timeControlDiv1.appendChild(nextGenButton1);
-    timeControlDiv1.appendChild(autoplayButton1);
+    let resizer = document.createElement('div');
+    let size = document.createElement('input');
+    size.type = 'num';
+    size.id = 'SIZE';
+    let builder = document.createElement('input');
+    builder.type = 'button';
+    builder.id = 'BUILD';
+    builder.value = 'Build';
+    resizer.appendChild(size);
+    resizer.appendChild(builder);
 
     controlsDiv.appendChild(genDiv);
     controlsDiv.appendChild(statsDiv);
     controlsDiv.appendChild(timeControlDiv);
-    controlsDiv.appendChild(timeControlDiv1);
+    controlsDiv.appendChild(resizer);
     document.body.appendChild(controlsDiv);
 }
 
