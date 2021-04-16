@@ -23,7 +23,17 @@ document.addEventListener('DOMContentLoaded', function() {
         createRandomPopulationLayout();
         populateUniverse();
     };*/
+    GenButton.onclick = function(){
+    for ( let i = 0; i < 23; i++ ) {
+      document.getElementById("nextGenButton").click();
+    }
+    };
 
+    Clear.onclick = function(){
+    layout.clear();
+    population.generation = 0;
+    };
+    
     nextGenButton.onclick = function() {
         createNextGeneration();
     };
@@ -131,12 +141,23 @@ function addControls() {
     nextGenButton.type = 'button';
     nextGenButton.id = 'nextGenButton';
     nextGenButton.value = 'Next Generation';
+      let Clear = document.createElement('input');
+    Clear.type = 'button';
+    Clear.id = 'Clear';
+    Clear.value = 'Reset';
+
+    let GenButton = document.createElement('input');
+    GenButton.type = 'button';
+    GenButton.id = 'GenButton';
+    GenButton.value = 'After 23 Generations';
     let autoplayButton = document.createElement('input');
     autoplayButton.type = 'button';
     autoplayButton.id = 'autoplayButton';
     autoplayButton.value = 'Start';
     timeControlDiv.appendChild(nextGenButton);
     timeControlDiv.appendChild(autoplayButton);
+      timeControlDiv.appendChild(GenButton);
+    timeControlDiv.appendChild(Clear);
 
     let resizer = document.createElement('div');
     let size = document.createElement('input');
