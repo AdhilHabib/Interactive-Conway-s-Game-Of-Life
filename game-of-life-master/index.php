@@ -37,7 +37,7 @@
 			if(sizeof($values)==4 && strcmp( $values[1], $_POST['username'])==0 && strcmp($values[2], $_POST['psw'])==0 ){
 				$username = $values[1];
 				print("Login successfull");
-			 header("Location: GameofLife");
+			 header("Location: game.html");
 				exit;
 			}
 
