@@ -30,7 +30,7 @@
 
 
      <input align="center" type="submit" name="done" class="signupbtn" value="Sign up">
-		 <a href="login.php">
+		 <a href="index.php">
 				<input type="button" value="Already have an account? Login" />
 		 </a>
 	 <?php
@@ -70,7 +70,7 @@
 				}
 			fwrite($myfile, $txt);
 			fclose($myfile);
-			header("Location: login.php");
+			header("Location: index.php");
 		}
 
 	 ?>
