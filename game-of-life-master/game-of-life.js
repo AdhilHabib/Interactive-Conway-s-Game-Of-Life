@@ -65,7 +65,25 @@ document.addEventListener('DOMContentLoaded', function() {
         makeBlinker();
     };
 
+let allCells = document.getElementsByClassName('cell')
+  console.log(allCells)
 
+for(let i = 0 ; i < allCells.length ; i++) {
+  allCells[i].addEventListener('click', function() {
+    allCells[i].onclick = function() {
+      console.log("I clicked a button");
+      // console.log(allCells.indexof(this));
+
+    if(allCells[i].classList.contains("alive")){
+        allCells[i].classList.remove('alive');
+    }else{
+      allCells[i].classList.add('alive');
+    }
+
+    }
+
+  });
+}
     autoplayButton.onclick = function() {
         if (!autoplayIntervalObj) { // autoplay is not running
             document.getElementById('autoplayButton').value = 'Stop';
@@ -174,7 +192,7 @@ function makeBlinker() {
         population.layout[2][1] = 1;
         population.layout[2][2] = 1;
         population.layout[2][3] = 1;
-       
+
         document.getElementsByTagName("tr")[2].getElementsByTagName("td")[1].classList.add('alive');
         document.getElementsByTagName("tr")[2].getElementsByTagName("td")[2].classList.add('alive');
         document.getElementsByTagName("tr")[2].getElementsByTagName("td")[3].classList.add('alive');
@@ -223,12 +241,12 @@ function addControls() {
 
     let statsDiv = document.createElement('div');
     let statsLabel = document.createElement('label');
-    statsLabel.innerHTML = 'Living cells: ';
-    let livingCellsCounterSpan = document.createElement('span');
-    livingCellsCounterSpan.id = 'livingCellsCounterSpan';
-    livingCellsCounterSpan.innerHTML = getLivingCellsCount();
-    statsDiv.appendChild(statsLabel);
-    statsDiv.appendChild(livingCellsCounterSpan);
+    // statsLabel.innerHTML = 'Living cells: ';
+    // let livingCellsCounterSpan = document.createElement('span');
+    // livingCellsCounterSpan.id = 'livingCellsCounterSpan';
+    // livingCellsCounterSpan.innerHTML = getLivingCellsCount();
+    // statsDiv.appendChild(statsLabel);
+    // statsDiv.appendChild(livingCellsCounterSpan);
 
     let timeControlDiv = document.createElement('div');
     let nextGenButton = document.createElement('input');
