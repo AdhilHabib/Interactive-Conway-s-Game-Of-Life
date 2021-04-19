@@ -273,8 +273,12 @@ function addControls() {
     Pattern3.type = 'button';
     Pattern3.id = 'PATTERN3';
     Pattern3.value = 'Blinker';
-
-
+	
+	let patternDiv = document.createElement('div');
+	patternDiv.appendChild(Pattern1);
+	patternDiv.appendChild(Pattern2);
+	patternDiv.appendChild(Pattern3);
+	document.body.appendChild(patternDiv);
     let GenButton = document.createElement('input');
     GenButton.type = 'button';
     GenButton.id = 'GenButton';
@@ -287,9 +291,9 @@ function addControls() {
     timeControlDiv.appendChild(autoplayButton);
     timeControlDiv.appendChild(GenButton);
     timeControlDiv.appendChild(Clear);
-    timeControlDiv.appendChild(Pattern1);
+  /*  timeControlDiv.appendChild(Pattern1);
     timeControlDiv.appendChild(Pattern2);
-    timeControlDiv.appendChild(Pattern3);
+    timeControlDiv.appendChild(Pattern3);*/
 
     let resizer = document.createElement('div');
     controlsDiv.appendChild(genDiv);
