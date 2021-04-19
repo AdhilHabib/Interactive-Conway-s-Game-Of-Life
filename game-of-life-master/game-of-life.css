@@ -1,24 +1,71 @@
-#universe {
-    width: 500px;
-    height: 500px;
-    border: 1px solid #000;
-}
-#universe td.cell {
-    border: 1px solid #eee;
-}
-#universe td.cell.alive {
-    border: 1px solid olivedrab;
-    background-color: GreenYellow ;
+h1{
+  text-align: center;}
+body{
+	background-color:#d3dbe8;
+	text-align:center; }
+  #universe {
+	 margin:auto;
+      width: 500px;
+      height: 500px;
+      border: 1px solid #1B4F72;
+  }
+  #universe td.cell {
+      border: 1px solid #eee;
+      background: white;
+  }
+  #universe td.cell.alive {
+      border: 1px solid white;
+      background-color: #30303d;
+  }
+div{
+	padding-top:7px;
 }
 
-#controlsDiv #genCounterSpan,
-#controlsDiv #livingCellsCounterSpan {
+#genCounterSpan{
+    font-weight: bold;
+    font-size:100;
+	
+}
+#livingCellsCounterSpan {
     font-weight: bold;
 }
-#controlsDiv #nextGenButton,
-#controlsDiv #autoplayButton {
-    height: 30px;
+  #controlsDiv #nextGenButton,
+  #controlsDiv #autoplayButton {
+      height: 49px;
+	  float:top;
+  }
+  #controlsDiv{
+	text-align:center;
+	margin-left:2%;
+	padding: 2px;
 }
-#controlsDiv #autoplayButton {
-    width: 45px;
+#autoplayButton:hover, #nextGenButton:hover, #Clear:hover, #PATTERN1:hover, #PATTERN2:hover, #PATTERN3:hover, #GenButton:hover, .button:hover,
+ #autoplayButton:focus, #nextGenButton:focus, #Clear:focus, #PATTERN1:focus, #PATTERN2:focus, #PATTERN3:focus, #GenButton:focus, .button:focus{
+	color:white;
+	box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(-0.40em);
+	background-color:black;
+}
+#PATTERN1, #PATTERN2, #PATTERN3, #Clear, #GenButton, #autoplayButton,#nextGenButton {
+	color:black;
+    display:inline-flex;
+	align-items:center;
+	margin-right:15px;
+    border: 1px solid black;
+    text-transform: uppercase;
+	padding:15px 32px;
+	height:49px;
+	background-color:white;
+}
+.button{
+	position:relative;
+	bottom:0;
+	color:black;
+    display:inline-flex;
+	align-items:center;
+    border: 1px solid black;
+    text-transform: uppercase;
+	padding:15px 32px;
+	margin-bottom:15px;
+	background-color:white;
 }
