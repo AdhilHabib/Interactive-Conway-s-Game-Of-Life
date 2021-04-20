@@ -1,4 +1,6 @@
-body {font-family: Arial, Helvetica, sans-serif;
+body {
+      background-color:#d3dbe8;
+    font-family: Arial, Helvetica, sans-serif;
     background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
