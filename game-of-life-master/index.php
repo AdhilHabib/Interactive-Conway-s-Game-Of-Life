@@ -2,6 +2,7 @@
 <html>
 <head>
 <link href="signup.css" type="text/css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="game-of-life.css">
 </head>
 <body>
 <?php
@@ -23,10 +24,10 @@
       <input type="password" placeholder="Enter Password" name="psw">
 
 
-     <input align="center" type="submit" name="done" class="loginbtn" value="Login">
+     <input align="center" type="submit" name="done" class="button" value="Login">
 
 		 <a href="signup.php">
- 		    <input type="button" value="Register" />
+ 		    <input type="button" class ="button" value="Register" />
  		 </a>
 	 <?php
 		if(isset($_POST['done'])){
@@ -37,7 +38,7 @@
 			if(sizeof($values)==4 && strcmp( $values[1], $_POST['username'])==0 && strcmp($values[2], $_POST['psw'])==0 ){
 				$username = $values[1];
 				print("Login successfull");
-			 header("Location: game.html");
+			 header("Location: index.html");
 				exit;
 			}
 
