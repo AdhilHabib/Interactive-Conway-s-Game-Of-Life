@@ -2,6 +2,7 @@
 <html>
 <head>
 <link href="signup.css" type="text/css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="game-of-life.css">
 </head>
 <body>
 <?php
@@ -29,9 +30,9 @@
       <input type="password" placeholder="Enter Password" name="psw">
 
 
-     <input align="center" type="submit" name="done" class="signupbtn" value="Sign up">
+     <input align="center" type="submit" name="done" class="button" value="Sign up">
 		 <a href="index.php">
-				<input type="button" value="Already have an account? Login" />
+				<input type="button" class = "button" value="Already have an account? Login" />
 		 </a>
 	 <?php
 		if(isset($_POST['done'])){
